@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Large amounts of stuff to be displayed here.....
   end  
 
   def edit

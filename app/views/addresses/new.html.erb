@@ -1,0 +1,16 @@
+<h1>Address Entry !</h1>
+<%= form_tag '/addresses', method: :post do  %>
+  <div>
+    Street: <input type="text" name="street">
+  </div>
+  <div>
+    City: <input type="text" name="city">
+  </div>
+  <div>
+    State: <input type="text" name="state">
+  </div>
+  <div>
+    Label: <input type="text" name="label">
+  </div>
+  <input type="submit" value="Submit">
+<% end %>
