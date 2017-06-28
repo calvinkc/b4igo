@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # before_action :authenticate_user! 
+
   def new
     render "new.html.erb"
   end
@@ -24,11 +26,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    # Large amounts of stuff to be displayed here.....
+    @user = User.find_by(id: params[:id])
+    render "show.html.erb"
   end  
 
   def edit
     @user = User.find_by(id: params[:id])
+    @addresses = @user.addresses
     render "edit.html.erb"
   end
 

@@ -1,13 +1,21 @@
 <h1>Edit User</h1>
 <%= form_tag "/users/#{@user.id}", method: :patch do %>
   <div>
-    First Name: <input type="text" name="firstname" value="<% @user.firstname %>">
+    <p><%= label_tag :firstname %>
+    <%= text_field_tag :firstname, @user.firstname %> </p>
+    <p><%= label_tag :lastname %>
+    <%= text_field_tag :lastname, @user.lastname %> </p>
+    <p><%= label_tag :email %>
+    <%= text_field_tag :email, @user.email %> </p>
+    <%= submit_tag "Update User Details" %>
   </div>
-  <div>
-    Last Name: <input type="text" name="lastname" value="<% @user.firstname %>">
-  </div>
-  <div>
-    Email: <input type="email" name="email" value="<% @user.email %>">
-  </div>
-  <input type="submit" value="Update User">
 <% end %>
+
+<div>
+  <h3> Existing Addresses </h3>
+  <h3> <% @addresses.each do |address|  %> </h3>
+  <h3> <%= address.street %></h3>
+  <h3> <%= address.city %>, <%= address.state %></h3>
+  <h3> <%= address.label %></h3> <br>
+  <h3> <% end %></h3>
+</div>
