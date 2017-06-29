@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_user!
-    redirect_to '/' unless current_user.id === session[:user_id]
+    redirect_to '/' unless current_user.id == session[:user_id]
   end
   
 end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!, except: [:new, :create]
   before_action :authorize_user!, except: [:new, :create]
+  before_action :authenticate_user!, except: [:new, :create]
 
   def new
     render "new.html.erb"
@@ -28,7 +28,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    render "show.html.erb"
+    unless session[:user_id] == @user.id
+      flash[:notice] = "You don't have access to that user!"
+      redirect_to user_path(current_user)
+    end
+    return
   end  
 
   def edit
