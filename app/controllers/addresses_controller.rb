@@ -12,12 +12,11 @@ class AddressesController < ApplicationController
     label: params[:label]
     )
     if address.save
-      session[:user_id] = address.id
       flash[:success] = "Address created!"
-      redirect_to "/"
+      redirect_to current_user
     else
       flash[:warning] = "Invalid Attributes"
-      redirect_to "/users/new"
+      redirect_to "/users/#{user_id}"
     end
   end
 

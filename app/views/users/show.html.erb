@@ -7,9 +7,6 @@
   <h2> Hello, <%= @user.firstname %> </h2>
   <li><a href="/logout">Logout! </a></li> 
   <p>
-  <%= form_tag "/addresses/new", method: :get do %>
-    <input type="submit" value="New Address(s) Entry">
-  <% end %> 
   <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
     <input type="submit" value="Edit Profile & Preferences">
   <% end %> 

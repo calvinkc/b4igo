@@ -1,21 +1,39 @@
 <h1>Edit User</h1>
-<%= form_tag "/users/#{@user.id}", method: :patch do %>
+<div>
+  <%= form_tag "/users/#{@user.id}", method: :patch do %>
+    <div>
+      <p><%= label_tag :firstname %>
+      <%= text_field_tag :firstname, @user.firstname %> </p>
+      <p><%= label_tag :lastname %>
+      <%= text_field_tag :lastname, @user.lastname %> </p>
+      <p><%= label_tag :email %>
+      <%= text_field_tag :email, @user.email %> </p>
+      <%= submit_tag "Update User Details" %>
+    </div>
+  <% end %>
+</div>
+<% if @addresses.length >= 1 %>
   <div>
-    <p><%= label_tag :firstname %>
-    <%= text_field_tag :firstname, @user.firstname %> </p>
-    <p><%= label_tag :lastname %>
-    <%= text_field_tag :lastname, @user.lastname %> </p>
-    <p><%= label_tag :email %>
-    <%= text_field_tag :email, @user.email %> </p>
-    <%= submit_tag "Update User Details" %>
+    <% if @addresses.length == 1 %>
+        <h3> You have one existing address </h3>
+    <% elsif @addresses.length > 1 %>
+        <h3> Your existing addresses </h3>
+    <% end %>
+    <% @addresses.each do |address|  %> 
+      <p> <b>Label:</b> <%= address.label %></p> 
+      <p> Street: <%= address.street %></p>
+      <p> State: <%= address.city %>, <%= address.state %></p>
+      <br>
+    <% end %>
   </div>
 <% end %>
-
 <div>
-  <h3> Existing Addresses </h3>
-  <h3> <% @addresses.each do |address|  %> </h3>
-  <h3> <%= address.street %></h3>
-  <h3> <%= address.city %>, <%= address.state %></h3>
-  <h3> <%= address.label %></h3> <br>
-  <h3> <% end %></h3>
+  <%= form_tag "/addresses/new", method: :get do %>
+    <input type="submit" value="New Address">
+  <% end %> 
+</div>
+<div>
+  <form method="get" action="/">
+      <button type="submit"> Return to Main</button>
+  </form>
 </div>

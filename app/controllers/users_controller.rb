@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  # before_action :authenticate_user! 
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authorize_user!, except: [:new, :create]
 
   def new
     render "new.html.erb"
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
     email: params[:email]
     )
     flash[:success] = "User Updated"
-    redirect_to "/users/"
+    redirect_to current_user
   end
 
 end
