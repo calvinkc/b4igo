@@ -14,26 +14,21 @@
 </div>
 <% if @addresses.length >= 1 %>
   <div>
-    <% if @addresses.length == 1 %>
-        <h3> You have one existing address </h3>
-    <% elsif @addresses.length > 1 %>
-        <h3> Your existing addresses </h3>
-    <% end %>
+    <h3> Your existing addresses </h3>
     <% @addresses.each do |address|  %> 
       <p> <b>Label:</b> <%= address.label.capitalize %></p> 
       <p> Street: <%= address.street.capitalize %></p>
       <p> State: <%= address.city.capitalize %>, <%= address.state.capitalize %></p>
-      <br>
+      <%= form_tag "/addresses/" + address.id.to_s, method: :delete do %>
+      <input type="submit" value="Remove Entry">
+      <% end %> 
+    <br>
     <% end %>
   </div>
 <% end %>
-<div>
-  <%= form_tag "/addresses/new", method: :get do %>
-    <input type="submit" value="New Address">
-  <% end %> 
+<div> 
+  <a href="/addresses/new"> <button>New Address</button> </a>
 </div>
 <div>
-  <form method="get" action="/">
-      <button type="submit"> Return to Main</button>
-  </form>
+  <a href="/"> <button>Return to Main</button> </a>
 </div>

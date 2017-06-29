@@ -13,20 +13,20 @@ class AddressesController < ApplicationController
     )
     if address.save
       flash[:success] = "Address created!"
-      redirect_to current_user
+      redirect_to edit_user_path(current_user)
     else
       flash[:warning] = "Invalid Attributes"
-      redirect_to "/users/#{user_id}/edit"
+      redirect_to edit_user_path(current_user)
     end
   end
 
   def edit
-    @address = address.find(id: params[:id])
+    @address = Address.find(id: params[:id])
     render "edit.html.erb"
   end
 
   def update
-    @address = address.find_by(id: params[:id])
+    @address = Address.find_by(id: params[:id])
     @address.update(
     street: params[:street], 
     city: params[:city],
@@ -37,5 +37,10 @@ class AddressesController < ApplicationController
     redirect_to "/"
   end
 
+  def destroy
+    @address = Address.find_by(id: params[:id])
+    @address.destroy
+    redirect_to edit_user_path(current_user)
+  end
 
 end
