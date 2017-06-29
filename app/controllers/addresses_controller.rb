@@ -16,7 +16,7 @@ class AddressesController < ApplicationController
       redirect_to current_user
     else
       flash[:warning] = "Invalid Attributes"
-      redirect_to "/users/#{user_id}"
+      redirect_to "/users/#{user_id}/edit"
     end
   end
 

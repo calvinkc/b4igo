@@ -3,9 +3,9 @@
   <%= form_tag "/users/#{@user.id}", method: :patch do %>
     <div>
       <p><%= label_tag :firstname %>
-      <%= text_field_tag :firstname, @user.firstname %> </p>
+      <%= text_field_tag :firstname, @user.firstname.capitalize %> </p>
       <p><%= label_tag :lastname %>
-      <%= text_field_tag :lastname, @user.lastname %> </p>
+      <%= text_field_tag :lastname, @user.lastname.capitalize %> </p>
       <p><%= label_tag :email %>
       <%= text_field_tag :email, @user.email %> </p>
       <%= submit_tag "Update User Details" %>
@@ -20,9 +20,9 @@
         <h3> Your existing addresses </h3>
     <% end %>
     <% @addresses.each do |address|  %> 
-      <p> <b>Label:</b> <%= address.label %></p> 
-      <p> Street: <%= address.street %></p>
-      <p> State: <%= address.city %>, <%= address.state %></p>
+      <p> <b>Label:</b> <%= address.label.capitalize %></p> 
+      <p> Street: <%= address.street.capitalize %></p>
+      <p> State: <%= address.city.capitalize %>, <%= address.state.capitalize %></p>
       <br>
     <% end %>
   </div>
