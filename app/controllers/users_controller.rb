@@ -37,8 +37,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
+    unless session[:user_id] == @user.id
+      flash[:notice] = "You don't have access to that user!"
+      redirect_to user_path(current_user)
+    end
     @addresses = @user.addresses
-    render "edit.html.erb"
   end
 
   def update
