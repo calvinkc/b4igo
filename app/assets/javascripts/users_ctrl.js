@@ -1,57 +1,43 @@
 (function() {
   "use strict";
 
-  angular.module("app").controller("usersctrl", function($scope){
-    $scope.message = "Hello World!";
+  angular.module("app").controller("usersctrl", function($scope, $window){
 
-    // $scope.reviews = ["AngularJS is the best thing since sliced bread", "I love AngularJS, I couldn't possibly breathe without it", "AngularJS rocks my socks off", "AngularJS syntax suxxxxxx!!"];
+    var vm = this;
 
-    // $scope.addReview = function(newReview){
-    //   $scope.reviews.push(newReview);
-    // };
-
-    $scope.tasks = [
-      { text: "Feed the cat",
-        priority: 5,
-        assigned_to: "Dani Zaghian"
-      },
-      { text: "Walk the cat",
-        priority: 2,
-        assigned_to: "Dani Zaghian"
-      },
-      { text: "Brush the cat",
-        priority: 3,
-        assigned_to: "Nadine"
-      },
-      { text: "Feed the fish",
-        priority: 4,
-        assigned_to: "Calvin"
+$window.initMap = function() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), 
+                {
+                zoom: 7,
+                center: {lat: 37.78, lng: -122.40
+                }
+        });
+        
+      directionsDisplay.setMap(map);
+      var onChangeHandler = function() {
+        vm.calculateAndDisplayRoute(directionsService, directionsDisplay);
+      };
+      document.getElementById('start').addEventListener('change', onChangeHandler);
+      document.getElementById('end').addEventListener('change', onChangeHandler);
       }
-    ];
 
-    $scope.addTask = function(text, priority, assigned_to) {
-      if (text && priority && assigned_to) {
-        var newTask = {
-          text: text,
-          priority: priority,
-          assigned_to: assigned_to
-        };
-        $scope.tasks.push(newTask);
-        $scope.newTaskText = null;
-        $scope.newTaskPriority = null;
-        $scope.newTaskAssignedTo = null;
+this.calculateAndDisplayRoute =  function(directionsService, directionsDisplay) {
+    directionsService.route({
+      origin: document.getElementById('start').value,
+      destination: document.getElementById('end').value,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+            if (status === 'OK') {
+              directionsDisplay.setDirections(response);
+              } 
+          else 
+              {
+            window.alert('Directions request failed due to ' + status);
+              }
+        });
       }
-    };
-
-    $scope.completeTask = function(index) {
-      $scope.tasks.splice(index, 1);
-    };
-
-    $scope.isCatTask = function(task) {
-      return (task.indexOf('cat') !== -1);
-    };
-
-
 
     window.$scope = $scope;
   });

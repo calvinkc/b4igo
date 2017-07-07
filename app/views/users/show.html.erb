@@ -4,13 +4,57 @@
 <h2> Hello, <%= @user.firstname.capitalize %> </h2>
 <h3>There will be API calls being made from this page probably later </h3>
 
-<div>
+<div ng-app="app" ng-controller="usersctrl" ng-init="initMap" id='angularInit'>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap">
+</script>
+
 [ Weather Details ]
 [ Google or Transit Details]
+<div id="map"></div>
+
+ <div id="floating-panel">
+    <b>Start: </b>
+    <select id="start">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+    <b>End: </b>
+    <select id="end">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+  </div>
+
+
 <br>
 </div>
+
 <li><a href="/logout">Logout! </a></li> 
 <p>
+
 <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
   <input type="submit" value="Edit Profile & Preferences">
 <% end %> 
+
+</div>

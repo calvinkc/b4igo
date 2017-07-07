@@ -8,6 +8,9 @@
       <li><a href="/login">Login! </a></li> 
 </div>
 
-<div ng-app="app">
+<div ng-app="app" ng-init="setup()">
+  {{ $scope.map }}
   {{ 1 + 1 }}
 </div>
+
+
