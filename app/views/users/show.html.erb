@@ -5,49 +5,36 @@
 <h3>There will be API calls being made from this page probably later </h3>
 
 <div ng-app="app" ng-controller="usersctrl" ng-init="initMap" id='angularInit'>
+
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap">
 </script>
 
 [ Weather Details ]
-[ Google or Transit Details]
+
+
+<div id="right-panel"></div>
 <div id="map"></div>
 
- <div id="floating-panel">
-    <b>Start: </b>
-    <select id="start">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
-    <b>End: </b>
-    <select id="end">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
-  </div>
-
-
-<br>
+<div id="floating-panel">
+  <b>Start: </b>
+  <select id="start">
+    <option value="155 Montgomery Street San Francisco CA">Work - SF</option>
+    <option value="77 Geary St., San Francisco, CA">TechSpace SF</option>
+    <option value="San Jose, cak">San Jose</option>
+    <option value="Brentwood, ca">Brentwood</option>
+    <option value="New York, ny">New York</option>
+    <option value="los angeles, ca">Los Angeles</option>
+  </select>
+  <b>End: </b>
+  <select id="end">
+    <option value="155 Montgomery Street San Francisco CA">Work - SF</option>
+    <option value="77 Geary St., San Francisco, CA">TechSpace SF</option>
+    <option value="San Jose, cak">San Jose</option>
+    <option value="Brentwood, ca">Brentwood</option>
+    <option value="New York, ny">New York</option>
+    <option value="los angeles, ca">Los Angeles</option>
+  </select>
 </div>
 
 <li><a href="/logout">Logout! </a></li> 

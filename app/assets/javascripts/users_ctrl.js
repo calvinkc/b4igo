@@ -14,7 +14,8 @@ $window.initMap = function() {
                 center: {lat: 37.78, lng: -122.40
                 }
         });
-        
+    
+      directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
       var onChangeHandler = function() {
         vm.calculateAndDisplayRoute(directionsService, directionsDisplay);
