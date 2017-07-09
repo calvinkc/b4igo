@@ -1,7 +1,7 @@
 <title> B4iGo - User Show</title>
 
 <h1>User Show Page</h1>
-<h2> Hello, <%= @user.firstname.capitalize %> </h2>
+<h2>Hello, <%= @user.firstname.capitalize %> </h2>
 
 <div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='angularInit'>
 
@@ -22,7 +22,7 @@
     <select id="end" >
     <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
     </select>
-
+    <div ng-init="finishedEvent()"></div>
   </div>
 <!-- TODO: use this format to loop through the option values -->
 <!--   

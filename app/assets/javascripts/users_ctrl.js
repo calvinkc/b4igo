@@ -1,26 +1,38 @@
 (function() {
   "use strict";
 
-  angular.module("app").controller("usersctrl", function($scope, $window, $http){
+  angular.module("app").controller("usersctrl", function($scope, $window, $http, $timeout){
 
-    var vm = this; // keeping this scope for the calculateAndDisplayRoute
+ //   var vm = this; // keeping this scope for the calculateAndDisplayRoute
+
+    var directionsService;
+    var directionsDisplay;
+
+    // $timeout(function() {
+    //   calculateAndDisplayRoute(directionsService, directionsDisplay);
+    // }, 1000);
+
+    $scope.finishedEvent = function() {
+      $timeout(function() {
+        $window.calculateAndDisplayRoute(directionsService, directionsDisplay);
+      }, 0);
+    }
 
     $scope.setup = function(user_id) {
       console.log(user_id)
       $http.get("/api/v1/users/" + user_id).then(function(response){
         $scope.user = response.data;
+        // calculateAndDisplayRoute(directionsService, directionsDisplay);
         // check for 2 items
         // if 2 items, start = 1, end = 2
         // call onChange function
-      console.log(response.data);
-
-      // findRoute(user.address1, user.address2)
+        console.log(response.data);
       });
     };
 
     $window.initMap = function() {
-      var directionsService = new google.maps.DirectionsService;
-      var directionsDisplay = new google.maps.DirectionsRenderer;
+      directionsService = new google.maps.DirectionsService;
+      directionsDisplay = new google.maps.DirectionsRenderer;
       // Priming the map div 
       var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
@@ -32,18 +44,17 @@
       directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
 
+
       var onChangeHandler = function() {
-        vm.calculateAndDisplayRoute(directionsService, directionsDisplay);
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
       };
-
 // TODO: Use the first entry of the user's address if it is available for initial.
-
       // This is where the user can select their different start/end locations
       document.getElementById('start').addEventListener('change', onChangeHandler);
       document.getElementById('end').addEventListener('change', onChangeHandler);
     }
 
-    this.calculateAndDisplayRoute =  function(directionsService, directionsDisplay){
+    $window.calculateAndDisplayRoute =  function(directionsService, directionsDisplay){
       console.log(directionsService, directionsDisplay)
       directionsService.route({
         origin: document.getElementById('start').value,
