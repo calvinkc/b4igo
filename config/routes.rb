@@ -37,8 +37,7 @@ end
 #        login GET    /login(.:format)              sessions#new
 #              POST   /login(.:format)              sessions#create
 #       logout GET    /logout(.:format)             sessions#destroy
-
-# 2.3 Path and URL Helpers
+# Path and URL Helpers
 # Creating a resourceful route will also expose a number of helpers to the controllers in your application. In the case of resources :photos:
 
 # photos_path returns /photos

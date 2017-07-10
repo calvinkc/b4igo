@@ -3,37 +3,27 @@
 
   angular.module("app").controller("usersctrl", function($scope, $window, $http, $timeout){
 
- //   var vm = this; // keeping this scope for the calculateAndDisplayRoute
-
     var directionsService;
     var directionsDisplay;
 
-    // $timeout(function() {
-    //   calculateAndDisplayRoute(directionsService, directionsDisplay);
-    // }, 1000);
-
+    // Small timeout to allow DOM manipulations
     $scope.finishedEvent = function() {
       $timeout(function() {
-
         $window.calculateAndDisplayRoute(directionsService, directionsDisplay);
       }, 500);
     }
-
+    // Loading in the user json
     $scope.setup = function(user_id) {
       console.log(user_id)
       $http.get("/api/v1/users/" + user_id).then(function(response){
         $scope.user = response.data;
-        // calculateAndDisplayRoute(directionsService, directionsDisplay);
-        // check for 2 items
-        // if 2 items, start = 1, end = 2
-        // call onChange function
         console.log(response.data);
-      // findRoute(user.address1, user.address2)
       });
     };
 
-// AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8
-// 39cdfd36c98e6799 
+// AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8 google javascript
+// 39cdfd36c98e6799 wunderground 
+
     $window.initMap = function() {
       directionsService = new google.maps.DirectionsService;
       directionsDisplay = new google.maps.DirectionsRenderer;
@@ -48,16 +38,14 @@
       directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
 
-
       var onChangeHandler = function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
       };
-// TODO: Use the first entry of the user's address if it is available for initial.
-      // This is where the user can select their different start/end locations
       document.getElementById('start').addEventListener('change', onChangeHandler);
       document.getElementById('end').addEventListener('change', onChangeHandler);
     }
 
+    // Actual google render/text directions services
     $window.calculateAndDisplayRoute =  function(directionsService, directionsDisplay){
       console.log(directionsService, directionsDisplay)
       directionsService.route({
@@ -75,6 +63,7 @@
            }
           });
     }
+    
     window.$scope = $scope;
   });
 })();
