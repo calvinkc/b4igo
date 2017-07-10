@@ -14,8 +14,9 @@
 
     $scope.finishedEvent = function() {
       $timeout(function() {
+
         $window.calculateAndDisplayRoute(directionsService, directionsDisplay);
-      }, 0);
+      }, 500);
     }
 
     $scope.setup = function(user_id) {
@@ -27,9 +28,12 @@
         // if 2 items, start = 1, end = 2
         // call onChange function
         console.log(response.data);
+      // findRoute(user.address1, user.address2)
       });
     };
 
+// AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8
+// 39cdfd36c98e6799 
     $window.initMap = function() {
       directionsService = new google.maps.DirectionsService;
       directionsDisplay = new google.maps.DirectionsRenderer;

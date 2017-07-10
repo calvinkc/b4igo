@@ -1,8 +1,7 @@
-<title> B4iGo - User Show</title>
-
-<h1>User Show Page</h1>
-<h2>Hello, <%= @user.firstname.capitalize %> </h2>
-
+<center>
+<br>
+<h2>Hello, <%= @user.firstname.capitalize %>. Welcome to User Show</h2>
+</center>
 <div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='angularInit'>
 
   <script async defer
@@ -11,12 +10,10 @@
 
   <div id="map"></div>
   <div id="right-panel"></div>
-
   <div id="floating-panel" >
     <b>Start: </b>
     <select id="start" >
       <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}">{{ address.label }}</option>
-
     </select>
     <b>End: </b>
     <select id="end" >
@@ -24,12 +21,7 @@
     </select>
     <div ng-init="finishedEvent()"></div>
   </div>
-<!-- TODO: use this format to loop through the option values -->
-<!--   
-  <div>
-      <li ng-repeat="addresses in user"> {{user.firstname}} </li>
-  </div>
- -->
+
   <div id='test'>
   <li><a href="/logout">Logout! </a></li> 
   <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
