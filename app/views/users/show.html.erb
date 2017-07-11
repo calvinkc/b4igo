@@ -1,32 +1,33 @@
 <center>
-<br>
-<h2>Hello, <%= @user.firstname.capitalize %>. Welcome to User Show</h2>
+  <br>
+  <h2>Hello, <%= @user.firstname.capitalize %>. Welcome to User Show</h2>
 </center>
+
 <div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='angularInit'>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"></script>
+    <div id="map"></div>
+    <div id="right-panel"></div>
+    <div id="floating-panel" >
+      <b>Start: </b>
+      <select id="start" >
+        <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}">{{ address.label }}</option>
+      </select>
+      <b>End: </b>
+      <select id="end" >
+        <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
+      </select>
+      <div ng-init="finishedEvent()"></div>
+    </div>
 
-  <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap">
-  </script>
-
-  <div id="map"></div>
-  <div id="right-panel"></div>
-  <div id="floating-panel" >
-    <b>Start: </b>
-    <select id="start" >
-      <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}">{{ address.label }}</option>
-    </select>
-    <b>End: </b>
-    <select id="end" >
-    <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
-    </select>
-    <div ng-init="finishedEvent()"></div>
-  </div>
-
-  <div id='test'>
-  <li><a href="/logout">Logout! </a></li> 
-  <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
-    <input type="submit" value="Edit Profile & Preferences">
-  <% end %> 
-  </div>
-
+    <div id='test'>
+      <li><a href="/logout">Logout! </a></li> 
+      <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
+      <input type="submit" value="Edit Profile & Preferences">
+      <% end %> 
+    </div>
+    
+    <div>
+    {{ initWeather }}
+    </div>
 </div>
