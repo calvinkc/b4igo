@@ -20,7 +20,7 @@
   margin-top:0 !important;
 }
 
-html, body, #angularInit {
+html, body, #mapRenderInit {
   height: 100%;
   width: 100%
 }
@@ -42,12 +42,17 @@ html, body, #angularInit {
 #right-panel {
   font-family: 'Roboto','sans-serif';
   line-height: 24px;
-  height: 50%;
+  height: 30%;
   float: right;
   width: 50%;
   // overflow: auto;
 }
 
+#weather {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 // Google Logo / Copyright remove - start
 a[href^="http://maps.google.com/maps"]{display:none !important}
 a[href^="https://maps.google.com/maps"]{display:none !important}

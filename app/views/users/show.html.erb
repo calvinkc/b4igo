@@ -2,10 +2,11 @@
   <br>
   <h2>Hello, <%= @user.firstname.capitalize %>. Welcome to User Show</h2>
 </center>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"> 
+  </script>
 
-<div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='angularInit'>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"></script>
+<div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit'>
     <div id="map"></div>
     <div id="right-panel"></div>
     <div id="floating-panel" >
@@ -20,14 +21,47 @@
       <div ng-init="finishedEvent()"></div>
     </div>
 
+    <div id='weather'> 
+   {{ weatherdata.location["name"] }}
+   {{ weatherdata.location["region"] }}
+   {{ weatherdata.current["temp_f"] }} Degrees
+   {{ weatherdata.current.condition["text"] }} 
+
+
+    </div>
+
+
+
     <div id='test'>
       <li><a href="/logout">Logout! </a></li> 
       <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
       <input type="submit" value="Edit Profile & Preferences">
       <% end %> 
-    </div>
-    
-    <div>
-    {{ initWeather }}
-    </div>
+    </div>   
 </div>
+
+<!-- {
+"location": {
+      "name": "San Francisco",
+      "region": "California",
+      "country": "USA",
+      "lat": 37.72,
+      "lon": -122.44,
+      "tz_id": "America/Los_Angeles",
+      "localtime_epoch": 1499821794,
+      "localtime": "2017-07-11 18:09"
+},
+      "current": {
+          "last_updated": "2017-07-11 18:00",
+          "temp_f": 69.1,
+          "is_day": 1,
+          "condition": {
+                "text": "Sunny",
+                "icon": "//cdn.apixu.com/weather/64x64/day/113.png",
+                "code": 1000
+          },
+      "humidity": 51,
+      "cloud": 0,
+      "feelslike_f": 69.1
+      }
+} -->

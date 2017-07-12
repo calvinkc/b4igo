@@ -29,9 +29,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.find(params[:id])
     render 'show.json.jbuilder'
   end
-
 # TODO: UPDATE: MAKE SURE TO USE REDIRECT
-
 
   def destroy
     user = User.find(params[:id])

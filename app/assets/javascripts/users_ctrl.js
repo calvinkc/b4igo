@@ -5,31 +5,31 @@
 
     var directionsService;
     var directionsDisplay;
+    initWeather(); 
 
-    // Small timeout to allow DOM manipulations
+    // Loading in the user json
+    $scope.setup = function(user_id) {
+      $http.get("/api/v1/users/" + user_id).then(function(response){
+        $scope.user = response.data;
+        console.log(response.data);
+      });
+    }
+    // Small timeout to allow DOM manipulations so TextDirections can run
     $scope.finishedEvent = function() {
       $timeout(function() {
         $window.calculateAndDisplayRoute(directionsService, directionsDisplay);
       }, 500);
     }
-    // Loading in the user json
-    $scope.setup = function(user_id) {
-      console.log(user_id);
-      $http.get("/api/v1/users/" + user_id).then(function(response){
-        $scope.user = response.data;
+
+    function initWeather() {
+      $http.get("http://api.apixu.com/v1/current.json?key=38aef271c31d418795114452171107&q=94112").then(function(response){
+        $scope.weatherdata = response.data;
         console.log(response.data);
       });
-    };
-
-    $scope.initWeather = function() {
-      $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22#{@city}%2C%20#{state}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").then(function(response){
-        $scope.weather = response.data;
-        console.log(response.data);
-      });
-    };
-
+    }
 // AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8 google javascript
 // 39cdfd36c98e6799 wunderground 
+// 38aef271c31d418795114452171107 apixu
 
     $window.initMap = function() {
       directionsService = new google.maps.DirectionsService;
