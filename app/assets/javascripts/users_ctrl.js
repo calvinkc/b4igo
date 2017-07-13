@@ -26,6 +26,12 @@
         $scope.weatherdata = response.data;
         console.log(response.data);
       });
+       $http.get("http://api.apixu.com/v1/forecast.json?key=38aef271c31d418795114452171107&q=94112&days=1").then(function(response){
+        $scope.forecastdata = response.data;
+        console.log(response.data);
+      });
+
+
     }
 // AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8 google javascript
 // 39cdfd36c98e6799 wunderground 
@@ -42,7 +48,7 @@
           }
       });
       // Initialize the map and text direction maps
-      directionsDisplay.setPanel(document.getElementById('right-panel'));  
+      // directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
 
       var onChangeHandler = function() {
@@ -61,7 +67,14 @@
             travelMode: 'DRIVING'
       },  function(response, status) {
             if (status === 'OK') {
+              // console.log(response);
               directionsDisplay.setDirections(response);
+              $timeout(function() {
+                $scope.distance = response.routes[0].legs[0].distance.text;
+                $scope.duration = response.routes[0].legs[0].duration.text;
+              });
+              // console.log("hahahahah");
+              // console.log($scope.distance);
             } 
            else {
             console.log(response);
