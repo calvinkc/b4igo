@@ -8,15 +8,15 @@
 
 <div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit'>
     <div id="map"></div>
-    <div id="right-panel"></div>
+<!--     <div id="right-panel"></div> -->
     <div id="floating-panel" >
       <b>Start: </b>
       <select id="start" >
-        <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}">{{ address.label }}</option>
+        <option ng-repeat="address in user.addresses" value="{{ address.location }}">{{ address.label }}</option>
       </select>
       <b>End: </b>
       <select id="end" >
-        <option ng-repeat="address in user.addresses" value="{{ address.street + ' ' + address.city + ' ' + address.state }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
+        <option ng-repeat="address in user.addresses" value="{{ address.location }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
       </select>
       <div ng-init="finishedEvent()"></div>
     </div>
@@ -34,7 +34,6 @@
      Feels like: {{ weatherdata.current["feelslike_f"] }} 
      </table>
     </div>
-
 
     <div id='test'>
       <li><a href="/logout">Logout! </a></li> 

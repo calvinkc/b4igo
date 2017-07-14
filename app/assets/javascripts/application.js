@@ -11,6 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require angular
 //= require app
+//= require geocomplete
 //= require_tree .
+
+$(function() {
+  $("#input").geocomplete();
+});

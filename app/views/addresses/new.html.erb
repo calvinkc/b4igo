@@ -1,17 +1,15 @@
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&libraries=places"></script>
+
 <title> B4iGo - Address Entry</title>
 <h1>Address Entry!</h1>
-<%= form_tag '/addresses', method: :post do  %>
+<%= form_tag "/addresses", method: :post do %>
   <div>
-    Street: <input type="text" name="street">
+    <%= label_tag :Location %>
+    <%= text_field_tag :location, nil, :id => 'input' %>
+
+    <%= label_tag :Label %>
+    <%= text_field_tag :label %>
+
+    <%= submit_tag "Submit" %>
   </div>
-  <div>
-    City: <input type="text" name="city">
-  </div>
-  <div>
-    State: <input type="text" name="state">
-  </div>
-  <div>
-    Label: <input type="text" name="label">
-  </div>
-  <input type="submit" value="Submit">
 <% end %>

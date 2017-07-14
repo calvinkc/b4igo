@@ -5,6 +5,7 @@
 
     var directionsService;
     var directionsDisplay;
+    var trafficLayer;
     initWeather(); 
 
     // Loading in the user json
@@ -40,6 +41,7 @@
     $window.initMap = function() {
       directionsService = new google.maps.DirectionsService;
       directionsDisplay = new google.maps.DirectionsRenderer;
+      trafficLayer = new google.maps.TrafficLayer();
       // Priming the map div 
       var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
@@ -50,6 +52,7 @@
       // Initialize the map and text direction maps
       // directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
+      trafficLayer.setMap(map);
 
       var onChangeHandler = function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -67,14 +70,11 @@
             travelMode: 'DRIVING'
       },  function(response, status) {
             if (status === 'OK') {
-              // console.log(response);
               directionsDisplay.setDirections(response);
               $timeout(function() {
                 $scope.distance = response.routes[0].legs[0].distance.text;
                 $scope.duration = response.routes[0].legs[0].duration.text;
               });
-              // console.log("hahahahah");
-              // console.log($scope.distance);
             } 
            else {
             console.log(response);

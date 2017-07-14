@@ -14,6 +14,7 @@
 
 #test {
   clear: both;
+  position: relative;
   // overflow: auto;
 }
 .adp-placemark {
@@ -49,7 +50,8 @@ html, body, #mapRenderInit {
 }
 
 #weather {
-    position: absolute;
+    position: relative;
+    top: 50%;
     bottom: 0;
     width: 100%;
 }

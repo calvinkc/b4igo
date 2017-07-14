@@ -17,9 +17,7 @@
   <div>
     <h3> Your existing addresses </h3>
     <% @addresses.each do |address|  %> 
-      <p> <b>Label:</b> <%= address.label.capitalize %></p> 
-      <p> Street: <%= address.street.capitalize %></p>
-      <p> State: <%= address.city.capitalize %>, <%= address.state.capitalize %></p>
+      <p> <b>Label:</b> <%= address.location.capitalize %></p> 
       <%= form_tag "/addresses/" + address.id.to_s, method: :delete do %>
       <input type="submit" value="Remove Entry">
       <% end %> 

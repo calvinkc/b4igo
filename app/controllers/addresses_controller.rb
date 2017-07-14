@@ -4,11 +4,10 @@ class AddressesController < ApplicationController
   end
 
   def create
+    puts params
     address = Address.new(
     user_id: current_user.id,
-    street: params[:street], 
-    city: params[:city],
-    state: params[:state],
+    location: params[:location], 
     label: params[:label]
     )
     if address.save
@@ -28,9 +27,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find_by(id: params[:id])
     @address.update(
-    street: params[:street], 
-    city: params[:city],
-    state: params[:state],
+    location: params[:location], 
     label: params[:label]
     )
     flash[:success] = "address Updated"
