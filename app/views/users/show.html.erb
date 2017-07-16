@@ -21,18 +21,24 @@
       <div ng-init="finishedEvent()"></div>
     </div>
 
-    <div id='weather'> 
+    <div id='currentWeather'> 
       <table>
-     {{ weatherdata.location["name"] }}
-     {{ weatherdata.location["region"] }}
-     {{ weatherdata.current["temp_f"] }} Degrees
-     {{ weatherdata.current.condition["text"] }} 
-     {{ distance }}
-     {{ duration }}
-
-     <img ng-src='{{ weatherdata.current.condition["icon"] }}'>
-     Feels like: {{ weatherdata.current["feelslike_f"] }} 
-     </table>
+      <tr>
+       {{date | date:'EEEE, MMMM dd'}}
+       <br>
+       {{ currentName }},
+       {{ currentRegion }}
+       <br>
+       Currently: {{ currentDegreeF }} Degrees
+       <br>
+       {{ currentDescription }} 
+     <br>
+      </table>
+       <img ng-src='{{ currentIcon }}'>
+       <br>
+       Total Distance: {{ distance }}
+       <br>
+       Time to Destination: {{ duration }}
     </div>
 
     <div id='test'>
@@ -41,8 +47,39 @@
       <input type="submit" value="Edit Profile & Preferences">
       <% end %> 
     </div>   
-</div>
 
+
+  <div class="hourly">
+      <table>
+          <thead>
+              <tr>
+                  <th>
+                      Time
+                  </th>
+                    <div>
+                      <td ng-repeat="hour in forecastdata.hour">
+                       {{ hour.time }} 
+                      </td>
+                    </div> 
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th>Forecast</th>
+                      <td ng-repeat="hour in forecastdata.hour">
+                          <span> {{ hour.condition.text }} </span>
+                      </td>
+              </tr>
+              <tr>
+                  <th>Temp (°F)</th>
+                      <td ng-repeat="hour in forecastdata.hour">
+                          <span> {{ hour.temp_f }}</span >
+                      </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>  
+</div><!--  app end -->
 
 <!-- 
 <table>
@@ -50,4 +87,9 @@
     <td>{{ x.Name }}</td>
     <td>{{ x.Country }}</td>
   </tr>
-</table> -->
+</table>
+
+<div ng-repeat="hour in forecastdata.hour"> {{ hour.time }} </div>
+
+
+ -->

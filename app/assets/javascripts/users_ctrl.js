@@ -6,13 +6,14 @@
     var directionsService;
     var directionsDisplay;
     var trafficLayer;
-    initWeather(); 
+    $scope.date = new Date();
 
     // Loading in the user json
     $scope.setup = function(user_id) {
       $http.get("/api/v1/users/" + user_id).then(function(response){
         $scope.user = response.data;
         console.log(response.data);
+        initWeather(); 
       });
     }
     // Small timeout to allow DOM manipulations so TextDirections can run
@@ -22,18 +23,6 @@
       }, 500);
     }
 
-    function initWeather() {
-      $http.get("http://api.apixu.com/v1/current.json?key=38aef271c31d418795114452171107&q=94112").then(function(response){
-        $scope.weatherdata = response.data;
-        console.log(response.data);
-      });
-       $http.get("http://api.apixu.com/v1/forecast.json?key=38aef271c31d418795114452171107&q=94112&days=1").then(function(response){
-        $scope.forecastdata = response.data;
-        console.log(response.data);
-      });
-
-
-    }
 // AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8 google javascript
 // 39cdfd36c98e6799 wunderground 
 // 38aef271c31d418795114452171107 apixu
@@ -59,6 +48,7 @@
       };
       document.getElementById('start').addEventListener('change', onChangeHandler);
       document.getElementById('end').addEventListener('change', onChangeHandler);
+      document.getElementById('end').addEventListener('change', initWeather);
     }
 
     // Actual google render/text directions services
@@ -82,6 +72,30 @@
               window.alert('Directions request failed due to ' + status);
            }
           });
+    }
+
+    function initWeather() {
+      $timeout(function() {
+        var endpoint = document.getElementById('end').value.split(',');
+        var cityState = endpoint[1] + ', ' + endpoint[2];
+
+        $http.get("http://api.apixu.com/v1/current.json?key=38aef271c31d418795114452171107&q=" + cityState).then(function(response){
+          $scope.weatherdata = response.data;
+          console.log(response.data); 
+          $scope.currentName = $scope.weatherdata["location"]["name"];
+          $scope.currentRegion = $scope.weatherdata["location"]["region"];
+          $scope.currentDegreeF = $scope.weatherdata["current"]["temp_f"];
+          $scope.currentDescription = $scope.weatherdata["current"]["condition"]["text"];
+          $scope.currentIcon = $scope.weatherdata["current"]["condition"]["icon"];
+        });
+
+         $http.get("http://api.apixu.com/v1/forecast.json?key=38aef271c31d418795114452171107&q=" + cityState + "&days=1").then(function(response){
+          $scope.forecastdata = response.data["forecast"]["forecastday"][0];
+          $scope.forecastdata["hour"].splice(0, 6);
+          $scope.forecastdata["hour"].splice(13, 5);
+          console.log($scope.forecastdata);
+        });
+      },0)
     }
 
 // TODO: If user does not have two addresses entered.
