@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-def new
+  def new
     render 'new.html.erb'
   end
 

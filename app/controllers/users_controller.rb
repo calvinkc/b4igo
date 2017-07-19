@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       flash[:success] = "User created!"
+      p current_user
       redirect_to "/addresses/new"
     else
       flash[:warning] = "Invalid email/pass"
@@ -45,6 +46,10 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
     @addresses = @user.addresses
+     if @user.addresses.length < 2
+      flash[:success] = "Make sure you have at least two addresses entered."
+      redirect_to new_address_path
+    end
   end
 
   def update

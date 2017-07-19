@@ -5,9 +5,20 @@
 
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+// body {
+// background-image: url("https://source.unsplash.com/random/1600x900/");
+// background-size: cover;
+// background-position: center;
+// background-repeat: no-repeat;
+// background-attachment: fixed;
+// -webkit-background-size: cover;
+// -o-background-size: cover;
+// -moz-background-size: cover;
+// }
+
 #map {
-  height: 60%;
-  width:50%;
+  height: 30%;
+  width: 30%;
   float: left;
   position: relative;
 }
@@ -27,7 +38,8 @@ html, body, #mapRenderInit {
 }
 /* Optional: Makes the sample page fill the window. */
 #floating-panel {
-  position: absolute;
+  position: relative;
+  float: center;
   top: 10px;
   left: 25%;
   right: 25%;
@@ -40,14 +52,14 @@ html, body, #mapRenderInit {
   padding-left: 10px;
 }
 
-#right-panel {
-  font-family: 'Roboto','sans-serif';
-  line-height: 24px;
-  height: 30%;
-  float: right;
-  width: 50%;
-  // overflow: auto;
-}
+// #right-panel {
+//   font-family: 'Roboto','sans-serif';
+//   line-height: 24px;
+//   height: 30%;
+//   float: right;
+//   width: 50%;
+//   // overflow: auto;
+// }
 
 #currentWeather {
     position: relative;
@@ -55,6 +67,12 @@ html, body, #mapRenderInit {
     bottom: 0;
     width: 100%;
 }
+
+#hourly {
+  bottom: 0;
+     border-style: solid;
+}
+
 // Google Logo / Copyright remove - start
 a[href^="http://maps.google.com/maps"]{display:none !important}
 a[href^="https://maps.google.com/maps"]{display:none !important}

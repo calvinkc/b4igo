@@ -1,14 +1,8 @@
-<center>
-  <br>
-  <h2>Hello, <%= @user.firstname.capitalize %>. Welcome to User Show</h2>
-</center>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"> 
-  </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"> 
+    </script>
 
 <div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit'>
     <div id="map"></div>
-<!--     <div id="right-panel"></div> -->
     <div id="floating-panel" >
       <b>Start: </b>
       <select id="start" >
@@ -49,47 +43,41 @@
     </div>   
 
 
-  <div class="hourly">
-      <table>
-          <thead>
-              <tr>
-                  <th>
-                      Time
-                  </th>
-                    <div>
-                      <td ng-repeat="hour in forecastdata.hour">
-                       {{ hour.time }} 
-                      </td>
-                    </div> 
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th>Forecast</th>
-                      <td ng-repeat="hour in forecastdata.hour">
-                          <span> {{ hour.condition.text }} </span>
-                      </td>
-              </tr>
-              <tr>
-                  <th>Temp (°F)</th>
-                      <td ng-repeat="hour in forecastdata.hour">
-                          <span> {{ hour.temp_f }}</span >
-                      </td>
-              </tr>
-          </tbody>
-      </table>
+  <div>
+    <table id="hourly">
+      <thead>
+        <tr>
+          <th>Time</th>
+            <div>
+              <td ng-repeat="hour in forecastdata.hour">
+              {{ hour.time_epoch * 1000 | date:'h:mm a' }}
+              </td>
+            </div> 
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <th>Forecast</th>
+            <td ng-repeat="hour in forecastdata.hour">
+                <span> {{ hour.condition.text }} </span>
+            </td>
+          </tr>
+          <tr>
+            <th>Temp (°F)</th>
+              <td ng-repeat="hour in forecastdata.hour">
+                  <span> {{ hour.temp_f }}</span >
+              </td>
+          </tr>
+          <tr>
+            <th>Condition</th>
+            <td ng-repeat="hour in forecastdata.hour">
+              <img ng-src='{{ hour.condition.icon }}'> </img>
+            </td>
+          </tr>
+        </tbody>
+    </table>
   </div>  
-</div><!--  app end -->
-
-<!-- 
-<table>
-  <tr ng-repeat="x in names">
-    <td>{{ x.Name }}</td>
-    <td>{{ x.Country }}</td>
-  </tr>
-</table>
-
-<div ng-repeat="hour in forecastdata.hour"> {{ hour.time }} </div>
 
 
- -->
+</div><!--  ng app end -->
+

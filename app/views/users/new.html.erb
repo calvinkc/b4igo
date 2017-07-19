@@ -1,19 +1,49 @@
 
+<body class="signup-page">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-<title> B4iGo - User Sign Up</title>
-<h1>Signup!</h1>
-<%= form_tag '/users', method: :post do  %>
-  <div>
-    First Name: <input type="text" name="firstname" >
+  <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="wrapper">
+    <div class="header">
+      <a href="/" class="logo">
+        <img src="/images/logo-alt-b.png" />
+      </a>
+    </div>
+    <form action ="/users" method="post">
+      <div class="form-field">
+        <input type="text" placeholder="Your first name" name="firstname">
+      </div>      
+      <div class="form-field">
+        <input type="text" placeholder="Your last name" name="lastname">
+      </div>
+      <div class="form-field">
+        <input type="email" placeholder="Email" name="email">
+      </div>
+      <div class="form-field">
+        <input type="password" placeholder="Password" name="password">
+      </div>
+      <div class="form-action">
+        <input type="submit" class="btn-shadow btn-shadow-primary" value="Sign Up">
+      </div>
+      <div class="form-bottom">
+        Already have an account?
+        <a href="/login">Sign in</a>
+      </div>
+    </form>
   </div>
-  <div>
-    Last Name: <input type="text" name="lastname">
-  </div>
-  <div>
-    Email: <input type="email" name="email">
-  </div>
-  <div>
-    Password: <input type="password" name="password">
-  </div>
-  <input type="submit" value="Submit">
-<% end %>
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+    // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    // e.src='//www.google-analytics.com/analytics.js';
+    // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    // ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+  </script>
+</body>

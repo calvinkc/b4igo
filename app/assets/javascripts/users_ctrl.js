@@ -28,20 +28,20 @@
 // 38aef271c31d418795114452171107 apixu
 
     $window.initMap = function() {
+      trafficLayer = new google.maps.TrafficLayer();
       directionsService = new google.maps.DirectionsService;
       directionsDisplay = new google.maps.DirectionsRenderer;
-      trafficLayer = new google.maps.TrafficLayer();
       // Priming the map div 
       var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
           center: {
             lat: 37.78, lng: -122.40
           }
+
       });
       // Initialize the map and text direction maps
       // directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
-      trafficLayer.setMap(map);
 
       var onChangeHandler = function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -67,7 +67,6 @@
               });
             } 
            else {
-            console.log(response);
               console.error(status);
               window.alert('Directions request failed due to ' + status);
            }
@@ -77,7 +76,10 @@
     function initWeather() {
       $timeout(function() {
         var endpoint = document.getElementById('end').value.split(',');
-        var cityState = endpoint[1] + ', ' + endpoint[2];
+
+          var cityState = endpoint[1] + ', ' + endpoint[2];
+          console.log(endpoint);
+          console.log(cityState);
 
         $http.get("http://api.apixu.com/v1/current.json?key=38aef271c31d418795114452171107&q=" + cityState).then(function(response){
           $scope.weatherdata = response.data;
