@@ -16,18 +16,21 @@
 // -moz-background-size: cover;
 // }
 
-#map {
-  height: 30%;
-  width: 30%;
-  float: left;
-  position: relative;
-  overflow: hidden;
-}
+// #map {
+//   height: 30%;
+//   width: 30%;
+//   float: left;
+//   position: relative;
+// }
 
-#mapRenderInit {
-  height: 100%;
-  width: 100%;
-}
+// #mapRenderInit {
+//   height: 100%;
+//   width: 100%;
+// }
+
+#mapRenderInit {border: 1px solid green; width: 60%; height: 60%; position:fixed; text-align:center}
+
+#map {border: 1px solid green; width: 61%; height: 47%; margin:0px auto; display:inline-block}
 
 // .adp-placemark {
 //   margin-top:0 !important;
@@ -52,6 +55,8 @@ html, body, #mapRenderInit {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // #right-panel {
@@ -66,10 +71,8 @@ html, body, #mapRenderInit {
 #currentWeather {
     position: relative;
     float: right;
-    // top: 20%;
-    // bottom: 0;
     width: 100%;
-      overflow: hidden;
+    text-align: center;
 }
 
 #hourly {
@@ -84,6 +87,7 @@ table, th, td{
   border: 1px solid black;
   margin-left: auto;
   margin-right: auto;
+  overflow-x:auto;
 }
 
 // Google Logo / Copyright remove - start

@@ -1,31 +1,27 @@
-<div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit' data-animate="fadeInScale">
+<div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit' data-animate="fadeInScale fadeInUp">
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"> 
     </script>
-
-    <div id="map"></div> 
-
     <div id='currentWeather'> 
       <table>
-      <tr>
-         {{date | date:'EEEE, MMMM dd'}}
-       <br>
-         {{ currentName }},
-         {{ currentRegion }}
-       <br>
-        Currently: {{ currentDegreeF }} Degrees
-       <br>
-        {{ currentDescription }} 
-       </tr>
-        <br>
+        <tr>
+          <td>
+           {{date | date:'EEEE, MMMM dd'}}
+          </td>
+          <td>
+            <img ng-src='{{ currentIcon }}'>
+          </td>
+        </tr>
+        <tr>
+          <td> {{ currentName }}, {{ currentRegion }} </td>
+          <td> {{ currentDescription }} : {{ currentDegreeF }} Degrees </td>
+        </tr>
+        <tr>
+          <td> Total Distance: {{ distance }} </td>
+          <td> Driving Time: {{ duration }} </td>
+        </tr>
       </table>
-       <img ng-src='{{ currentIcon }}'>
-       <br>
-       Total Distance: {{ distance }}
-       <br>
-       Time to Destination: {{ duration }}
     </div>
   
-
     <table id="hourly">
       <thead>
         <tr>
@@ -58,7 +54,8 @@
           </tr>
         </tbody>
     </table>
-    
+
+
     <div id="floating-panel" >
       <b>Start: </b>
       <select id="start" >
@@ -70,6 +67,8 @@
       </select>
       <div ng-init="finishedEvent()"></div>
     </div>
+
+        <div id="map"></div> 
 <!-- 
 
 </div>    

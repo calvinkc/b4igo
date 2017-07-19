@@ -1,33 +1,30 @@
-<title> B4iGo - Edit User </title>
-<h1>Edit User</h1>
-<div>
+<div class="agency-start-project-form">
   <%= form_tag "/users/#{@user.id}", method: :patch do %>
-    <div>
-      <p><%= label_tag :firstname %>
-      <%= text_field_tag :firstname, @user.firstname.capitalize %> </p>
-      <p><%= label_tag :lastname %>
-      <%= text_field_tag :lastname, @user.lastname.capitalize %> </p>
-      <p><%= label_tag :email %>
-      <%= text_field_tag :email, @user.email %> </p>
-      <%= submit_tag "Update User Details" %>
+    <div class="container">
+      <p><%= text_field_tag :firstname, @user.firstname.capitalize %> </p>
+      <p><%= text_field_tag :lastname, @user.lastname.capitalize %> </p>
+      <p><%= text_field_tag :email, @user.email %> </p>
+      <%= submit_tag "Update User Details" %> 
     </div>
   <% end %>
 </div>
-<% if @addresses.length >= 1 %>
-  <div>
-    <h3> Your existing addresses </h3>
-    <% @addresses.each do |address|  %> 
-      <p> <b>Label:</b> <%= address.location.capitalize %></p> 
-      <%= form_tag "/addresses/" + address.id.to_s, method: :delete do %>
-      <input type="submit" value="Remove Entry">
-      <% end %> 
-    <br>
-    <% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3> Address Book</h3> <a href="/addresses/new"> <button>New Address</button> </a>
+      <ul class="list-group">
+        <% @addresses.each do |address|  %> 
+          <li class="list-group-item"> <%= address.location.upcase + "   " + "  " %> 
+          <%= form_tag "/addresses/" + address.id.to_s, method: :delete do %>
+          <input type="submit" value="Remove">
+          </li>
+          <% end %> 
+        <% end %>
+      </ul>
   </div>
-<% end %>
-<div> 
-  <a href="/addresses/new"> <button>New Address</button> </a>
 </div>
-<div>
-  <a href="/"> <button>Return to Main</button> </a>
+
+
+<div class="agency-start-city-bg">
 </div>
+

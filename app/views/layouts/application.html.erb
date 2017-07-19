@@ -43,6 +43,11 @@
               </li>
           <% else %>
               <li class="nav-item">
+                <a class="nav-link" href="/"> 
+                Main 
+                </a>
+              </li>              
+              <li class="nav-item">
                 <a class="nav-link nav-link--rounded" href="/users/<%= current_user.id %>/edit"> 
                 Preferences 
                 </a>
@@ -58,14 +63,11 @@
     </div>
   </nav>
    
-
 <% flash.each do |key, message| %>
     <div class="alert alert-<%= key %> alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button> <%= message %>
     </div>
-
     <% end %>
-
 
 
     <%= yield %>
