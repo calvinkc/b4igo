@@ -18,5 +18,5 @@
 //= require_tree .
 
 $(function() {
-  $("#input").geocomplete();
+  $("#inputadasd").geocomplete();
 });

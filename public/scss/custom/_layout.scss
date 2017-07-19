@@ -65,8 +65,9 @@ body {
           color: #555;
           border-radius: 25px;
           margin-left: 20px;
+          margin-bottom: 20px;
           margin-top: 22px;
-          padding: 8px 20px 9px;
+          padding: 8px 20px 9px 20px;
 
           @include transition(all .15s ease-out);
 
@@ -153,7 +154,8 @@ body {
           border-radius: 25px;
           margin-left: 20px;
           margin-top: 22px;
-          padding: 8px 20px 9px;
+          margin-bottom: 22px;
+          padding: 8px 20px 9px 20px;
 
           @include transition(all .15s ease-out);
 

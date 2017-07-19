@@ -1,32 +1,22 @@
+<div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit' data-animate="fadeInScale">
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"> 
     </script>
 
-<div ng-app="app" ng-controller="usersctrl" ng-init="setup(<%= @user.id %>)" id='mapRenderInit'>
-    <div id="map"></div>
-    <div id="floating-panel" >
-      <b>Start: </b>
-      <select id="start" >
-        <option ng-repeat="address in user.addresses" value="{{ address.location }}">{{ address.label }}</option>
-      </select>
-      <b>End: </b>
-      <select id="end" >
-        <option ng-repeat="address in user.addresses" value="{{ address.location }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
-      </select>
-      <div ng-init="finishedEvent()"></div>
-    </div>
+    <div id="map"></div> 
 
     <div id='currentWeather'> 
       <table>
       <tr>
-       {{date | date:'EEEE, MMMM dd'}}
+         {{date | date:'EEEE, MMMM dd'}}
        <br>
-       {{ currentName }},
-       {{ currentRegion }}
+         {{ currentName }},
+         {{ currentRegion }}
        <br>
-       Currently: {{ currentDegreeF }} Degrees
+        Currently: {{ currentDegreeF }} Degrees
        <br>
-       {{ currentDescription }} 
-     <br>
+        {{ currentDescription }} 
+       </tr>
+        <br>
       </table>
        <img ng-src='{{ currentIcon }}'>
        <br>
@@ -34,16 +24,8 @@
        <br>
        Time to Destination: {{ duration }}
     </div>
+  
 
-    <div id='test'>
-      <li><a href="/logout">Logout! </a></li> 
-      <%= form_tag "/users/#{@user.id}/edit", method: :get do %>
-      <input type="submit" value="Edit Profile & Preferences">
-      <% end %> 
-    </div>   
-
-
-  <div>
     <table id="hourly">
       <thead>
         <tr>
@@ -58,9 +40,9 @@
         <tbody>
           <tr>
             <th>Forecast</th>
-            <td ng-repeat="hour in forecastdata.hour">
+              <td ng-repeat="hour in forecastdata.hour">
                 <span> {{ hour.condition.text }} </span>
-            </td>
+              </td>
           </tr>
           <tr>
             <th>Temp (°F)</th>
@@ -70,14 +52,37 @@
           </tr>
           <tr>
             <th>Condition</th>
-            <td ng-repeat="hour in forecastdata.hour">
-              <img ng-src='{{ hour.condition.icon }}'> </img>
+              <td ng-repeat="hour in forecastdata.hour">
+                <img ng-src='{{ hour.condition.icon }}'>
             </td>
           </tr>
         </tbody>
     </table>
-  </div>  
+    
+    <div id="floating-panel" >
+      <b>Start: </b>
+      <select id="start" >
+        <option ng-repeat="address in user.addresses" value="{{ address.location }}">{{ address.label }}</option>
+      </select>
+      <b>End: </b>
+      <select id="end" >
+        <option ng-repeat="address in user.addresses" value="{{ address.location }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
+      </select>
+      <div ng-init="finishedEvent()"></div>
+    </div>
+<!-- 
 
-
+</div>    
+  <footer class="footer">
+    <div class="container">
+      <div class="bottom">
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Legal</a></li>
+          <li><a href="#">Language</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer> -->
 </div><!--  ng app end -->
 

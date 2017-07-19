@@ -28,9 +28,9 @@
 // 38aef271c31d418795114452171107 apixu
 
     $window.initMap = function() {
-      trafficLayer = new google.maps.TrafficLayer();
       directionsService = new google.maps.DirectionsService;
       directionsDisplay = new google.maps.DirectionsRenderer;
+      trafficLayer = new google.maps.TrafficLayer();
       // Priming the map div 
       var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
@@ -42,6 +42,7 @@
       // Initialize the map and text direction maps
       // directionsDisplay.setPanel(document.getElementById('right-panel'));  
       directionsDisplay.setMap(map);
+      trafficLayer.setMap(map);
 
       var onChangeHandler = function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);

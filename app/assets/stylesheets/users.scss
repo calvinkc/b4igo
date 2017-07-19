@@ -21,16 +21,17 @@
   width: 30%;
   float: left;
   position: relative;
+  overflow: hidden;
 }
 
-#test {
-  clear: both;
-  position: relative;
-  // overflow: auto;
+#mapRenderInit {
+  height: 100%;
+  width: 100%;
 }
-.adp-placemark {
-  margin-top:0 !important;
-}
+
+// .adp-placemark {
+//   margin-top:0 !important;
+// }
 
 html, body, #mapRenderInit {
   height: 100%;
@@ -40,10 +41,11 @@ html, body, #mapRenderInit {
 #floating-panel {
   position: relative;
   float: center;
-  top: 10px;
-  left: 25%;
-  right: 25%;
-  z-index: 5;
+  // margin: 0 auto;
+  // top: 10px;
+  // left: 25%;
+  // right: 25%;
+  // z-index: 5;
   background-color: #fff;
   padding: 5px;
   text-align: center;
@@ -63,14 +65,25 @@ html, body, #mapRenderInit {
 
 #currentWeather {
     position: relative;
-    top: 20%;
-    bottom: 0;
+    float: right;
+    // top: 20%;
+    // bottom: 0;
     width: 100%;
+      overflow: hidden;
 }
 
 #hourly {
   bottom: 0;
-     border-style: solid;
+  position: relative;
+  float: center;
+  border-style: solid;
+  text-align: center;
+}
+
+table, th, td{
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Google Logo / Copyright remove - start
