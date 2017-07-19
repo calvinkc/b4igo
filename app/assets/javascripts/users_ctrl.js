@@ -82,7 +82,7 @@
           console.log(endpoint);
           console.log(cityState);
 
-        $http.get("http://api.apixu.com/v1/current.json?key=38aef271c31d418795114452171107&q=" + cityState).then(function(response){
+        $http.get("https://api.apixu.com/v1/current.json?key=38aef271c31d418795114452171107&q=" + cityState).then(function(response){
           $scope.weatherdata = response.data;
           console.log(response.data); 
           $scope.currentName = $scope.weatherdata["location"]["name"];
@@ -92,7 +92,7 @@
           $scope.currentIcon = $scope.weatherdata["current"]["condition"]["icon"];
         });
 
-         $http.get("http://api.apixu.com/v1/forecast.json?key=38aef271c31d418795114452171107&q=" + cityState + "&days=1").then(function(response){
+         $http.get("https://api.apixu.com/v1/forecast.json?key=38aef271c31d418795114452171107&q=" + cityState + "&days=1").then(function(response){
           $scope.forecastdata = response.data["forecast"]["forecastday"][0];
           $scope.forecastdata["hour"].splice(0, 6);
           $scope.forecastdata["hour"].splice(13, 5);
