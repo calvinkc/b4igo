@@ -9,21 +9,27 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <h3> Address Book</h3> <a href="/addresses/new"> <button>New Address</button> </a>
-      <ul class="list-group">
-        <% @addresses.each do |address|  %> 
-          <li class="list-group-item"> <%= address.location.upcase + "   " + "  " %> 
-          <%= form_tag "/addresses/" + address.id.to_s, method: :delete do %>
-          <input type="submit" value="Remove">
-          </li>
-          <% end %> 
-        <% end %>
-      </ul>
+<div class="container">
+<br>
+  <div class="row justify-content-center">
+    <div>
+      <center> <h2> Address Book </h2></center> <a href="/addresses/new"> <span class="ion-plus-circled"> New Address</span> </a>
+        <table>
+          <% @addresses.each do |address|  %> 
+          <tbody>
+            <tr>
+              <td> <%= address.location.upcase + "   " + "  " %> 
+              <%= form_tag "/addresses/" + address.id.to_s, method: :delete do %>
+              <div class="pull-right "> <%= button_tag "Remove", :class => "btn-shadow btn-pill btn-pill-danger btn-pill-sm" %> </div>
+              </td>
+            </tr>
+          </tbody>
+            <% end %> 
+          <% end %>
+        </table>
+    </div>
   </div>
 </div>
-
 
 <div class="agency-start-city-bg">
 </div>

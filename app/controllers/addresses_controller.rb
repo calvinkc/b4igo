@@ -12,7 +12,8 @@ class AddressesController < ApplicationController
     )
     if address.save
       flash[:success] = "Address created!"
-      redirect_to edit_user_path(current_user)
+ #     redirect_to edit_user_path(current_user)
+      redirect_to "/"
     else
       flash[:warning] = "Invalid Attributes"
       redirect_to edit_user_path(current_user)

@@ -2,7 +2,7 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZx7TZuSm5GFaWsEVQZ2BqVvkEO5r2vY8&callback=initMap"> 
     </script>
     <div id='currentWeather'> 
-      <table>
+      <table bgcolor="#00FF00">
         <tr>
           <td>
            {{date | date:'EEEE, MMMM dd'}}
@@ -22,7 +22,7 @@
       </table>
     </div>
   <div id=table>
-    <table id="hourly">
+    <table id="hourly" class="table-hover" bgcolor="#00FF00">
       <thead>
         <tr>
           <th>Time</th>
