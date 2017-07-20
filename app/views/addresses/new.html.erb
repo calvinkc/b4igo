@@ -5,11 +5,11 @@
       <div class="container">
           <h3> Enter an Address </h3>
           <%= form_tag "/addresses", :class => "form-inline justify-content-center", method: :post do %>
-            <div class="form-group">
+            <div class="form-group" id="address-form">
               <%= label_tag :Address %>
               <%= text_field_tag :location, nil, :class => "form-control", :id => 'inputadasd' %>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="address-form">
               <%= label_tag :Label %>
               <%= text_field_tag :label, nil, :class => "form-control" %>
             </div>
@@ -17,7 +17,7 @@
             <%= button_tag "Submit Address", :class => "btn-shadow btn-shadow-primary" %>
             </div>
             
-            <div class="w-75 pr-2 "> Must have at least two addresses saved.</div>
+            <div class="w-75 pr-2 pt-20"> Must have at least two addresses saved.</div>
         <% end %>
       </div>
     </div>

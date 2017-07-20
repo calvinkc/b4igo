@@ -30,7 +30,7 @@
 
 #mapRenderInit {border: 1px solid green; width: 60%; height: 60%; position:fixed; text-align:center}
 
-#map {border: 1px solid green; width: 61%; height: 47%; margin:0px auto; display:inline-block}
+#map {border: 1px solid green; width: 61%; height: 44%; margin:0px auto; display:inline-block}
 
 // .adp-placemark {
 //   margin-top:0 !important;
@@ -74,6 +74,7 @@ html, body, #mapRenderInit {
     width: 100%;
     text-align: center;
     padding: 1px;
+    margin: 15px 0px;
 }
 
 #hourly {
@@ -87,6 +88,7 @@ html, body, #mapRenderInit {
 #table{
   overflow-x:auto;
   min-width: 180px;
+  margin-bottom: 15px;
 }
 
 table, th, td{

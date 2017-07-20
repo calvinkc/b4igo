@@ -56,13 +56,13 @@
     </table>
   </div>
 
-    <div id="floating-panel" >
-      <b>Start: </b>
-      <select id="start" >
+    <div id="floating-panel">
+      <b class="address-label">Start: </b>
+      <select id="start" class="btn btn-lg btn-secondary">
         <option ng-repeat="address in user.addresses" value="{{ address.location }}">{{ address.label }}</option>
-      </select>
-      <b>End: </b>
-      <select id="end" >
+      </select>  
+      <b class="address-label">End: </b>
+      <select id="end" class="btn btn-lg btn-secondary" >
         <option ng-repeat="address in user.addresses" value="{{ address.location }}" ng-selected="{{ address == user.addresses[1] }}">{{ address.label }}</option>
       </select>
       <div ng-init="finishedEvent()"></div>
